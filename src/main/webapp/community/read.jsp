@@ -125,7 +125,7 @@
 			<c:forEach var="cmt" items="${cmtlist}">
 			<li>
 				<ul class="crow">
-					<li><c:out value="${cmt.writer }" /></li>				
+					<li><c:out value="${cmt.writer }" /></li>			
 					<li><c:out value="${cmt.ip }" /></li>				
 					<li><c:out value="${cmt.createdAt }" /></li>	
 				<c:if test="${user.userid==cmt.writer }">  <!-- session 에 저장된 user애트리뷰트의 id와 작성자의 id 가 같은면 보이기 -->		
