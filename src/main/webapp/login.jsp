@@ -22,14 +22,14 @@
 		<div class="mycol-2" style="width:450px;">
 			<img alt="" width="100%;" height="70%" style="object-fit:cover;align-content: right;" src="./images/bookcafe1.jpg">
 		</div>
-		<div class="mycol-2" style="width:600px;">				
+		<div class="mycol-2" style="width:600px;">			
 				<div class="login">
 				  <h2>회원 로그인</h2>
 				  <label id="incorrect">계정 정보가 일치하지 않습니다.</label>
 				  <form action="login" method="post">
 				    <div class="mb-3">
 				      <label for="userid">아이디:</label>
-				      <input class="form-control" id="userid" placeholder="Enter id" type="text" name="userid" required value="wonder" >
+				      <input class="form-control" id="userid" placeholder="Enter id" type="text" name="userid" required value="wonder">
 				    </div>
 				    <div class="mb-3">
 				      <label for="pwd">패스워드:</label>

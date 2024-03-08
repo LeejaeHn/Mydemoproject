@@ -27,6 +27,7 @@ public class DeleteController implements Controller {
 		Community vo = dao.selectByIdx(idx);
 		if(vo==null || !vo.getWriter().equals(user.getUserid())) throw new RuntimeException();
 		
+		//Get 요청은 삭제 실행하기 전에 인가 권한 확인.
 		int result = dao.delete(idx);
 		if(result == 1) {
 			//삭제한 글이 있던 페이지로 돌아가기(요청 리다이렉트)
