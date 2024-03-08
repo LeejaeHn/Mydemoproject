@@ -208,10 +208,16 @@ section  {
 	padding-bottom: 3px;
 }
 
+<<<<<<< HEAD
+#read textarea{
+	resize: none;
+}
+=======
 #read textarea {
 	resize: none;
 }
 
+>>>>>>> refs/heads/main
 
 
 
