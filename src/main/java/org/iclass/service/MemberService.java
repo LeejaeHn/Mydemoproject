@@ -37,17 +37,26 @@ public class MemberService {
 		
 		return result;
 	}
-	
+	// 암호화 : 평문 -> 알고리즘 -> 암호문(가독X)
+	// 복호화 : 암호문 -> 알고리즘 -> 평문
+	// 해싱 : 평문 -> 해싱함수 -> 같은 평문에 대해 가독불가능 같은 문자열(암호문)
+	//		암호화된 문자열이 다시 평문으로 복구 불가.
+	//		sh256 해싱함수는 암호문 문자열 256비트 16진수 64개문자로 만듦.
 	public String encrypt(String text) throws NoSuchAlgorithmException {
+		//자바에서는 MessageDigest 클래스가 해싱함수 제공
+		//1) 실행 객체 생성
         MessageDigest md = MessageDigest.getInstance("SHA-256");
+        //2) 평문을 저장. byte배열로 변환하여 저장
         md.update(text.getBytes());
 
+        //md.digest()메소드가 해싱함수 실행. 해싱 결과가 byte[]
         return bytesToHex(md.digest());
     }
 
     private String bytesToHex(byte[] bytes) {
         StringBuilder builder = new StringBuilder();
         for (byte b : bytes) {
+        	//byte[] 에서 1바이트씩 가져와 16진수 2자리로 변환
             builder.append(String.format("%02x", b));
         }
         return builder.toString();

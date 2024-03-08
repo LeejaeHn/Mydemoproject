@@ -29,12 +29,12 @@
 				  <form action="login" method="post">
 				    <div class="mb-3">
 				      <label for="userid">아이디:</label>
-				      <input class="form-control" id="userid" placeholder="Enter id" type="text" name="userid" required>
+				      <input class="form-control" id="userid" placeholder="Enter id" type="text" name="userid" required value="wonder" >
 				    </div>
 				    <div class="mb-3">
 				      <label for="pwd">패스워드:</label>
 				      <input type="password" class="form-control" id="password" placeholder="Enter password" 
-				      		name="password" required>
+				      		name="password" required value="1111" >
 				    </div>
 				    <div class="form-check mb-3">
 				      <label class="form-check-label">
@@ -52,9 +52,7 @@
 		</div>
 </div>
 <script>
-	/* 쿠키에 저장된 로그인 실패 정보 확인 : el 에 쿠키 객체 cookie 를 지원되므로 해당 쿠키이름 지정하여
-		사용합니다.
-	*/
+	/* 쿠키에 저장된 로그인 실패 정보 확인 : el에 쿠키 객체 cookie를 지원되므로 해당 쿠키이름 지정하여 사용.*/
 	console.log('${cookie.incorrect}')
 	if('${cookie.incorrect.value}'==='y') {
 		document.getElementById('incorrect').style.display='inline-block';
