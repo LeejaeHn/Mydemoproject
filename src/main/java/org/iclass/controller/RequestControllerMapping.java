@@ -3,11 +3,6 @@ package org.iclass.controller;
 import java.util.HashMap;
 import java.util.Map;
 
-<<<<<<< HEAD
-import org.iclass.controller.book.BookCaseFormController;
-import org.iclass.controller.book.BookCaseListController;
-import org.iclass.controller.book.BookCasessaveController;
-=======
 import org.iclass.controller.api.ApiCheckIdController;
 import org.iclass.controller.api.ApiMemberJoinController;
 import org.iclass.controller.api.ApiMemberModifyController;
@@ -17,7 +12,6 @@ import org.iclass.controller.book.BookCaseListController;
 import org.iclass.controller.book.BookCasePayRequestFailController;
 import org.iclass.controller.book.BookCasePayRequestSuccessController;
 import org.iclass.controller.book.BookCaseSaveController;
->>>>>>> branch 'final' of https://github.com/kimsohee-around/DemoProject.git
 import org.iclass.controller.community.CommentsController;
 import org.iclass.controller.community.DeleteController;
 import org.iclass.controller.community.ListController;
@@ -73,21 +67,12 @@ public class RequestControllerMapping {
 
 		//책장
 		mapping.put(new RequestKeyValue("/book/bookcase","GET"), new BookCaseListController());
-<<<<<<< HEAD
-//		mapping.put(new RequestKeyValue("/pay/success","GET"), new BookCasePayRequestSuccessController());
-//		mapping.put(new RequestKeyValue("/pay/fail","GET"), new BookCasePayRequestFailController());
-		//추가
-		mapping.put(new RequestKeyValue("/book/form","GET"), new BookCaseFormController());
-		mapping.put(new RequestKeyValue("/book/save","POST"), new BookCasessaveController());
-
-=======
 		mapping.put(new RequestKeyValue("/pay/success","GET"), new BookCasePayRequestSuccessController());
 		mapping.put(new RequestKeyValue("/pay/fail","GET"), new BookCasePayRequestFailController());
 		//추가
 		mapping.put(new RequestKeyValue("/book/form","GET"), new BookCaseFormController());
 		mapping.put(new RequestKeyValue("/book/save","POST"), new BookCaseSaveController());
 		
->>>>>>> branch 'final' of https://github.com/kimsohee-around/DemoProject.git
 		//공지사항(검색기능)
 //		mapping.put(new RequestKeyValue("/notice/list", "GET"), new NoticeListController());
 //		mapping.put(new RequestKeyValue("/notice/read", "GET"), new NoticeReadController());
