@@ -23,6 +23,7 @@
    <body class="is-preload">
       <div id="page-wrapper">
 
+<<<<<<< HEAD
          <!-- Header -->
             <%@ include file="../layout/header.jsp" %>
          <!-- Main -->
@@ -67,6 +68,51 @@
          <%@ include file="../layout/footer.jsp" %>
          <div data-num="3" id="datanum"></div>
       </div>
+=======
+			<!-- Header -->
+				<%@ include file="../layout/header.jsp" %>
+			<!-- Main -->
+			<section id="booklist">
+				<h3>책장</h3>
+				<p>판매 중인 중고도서입니다.</p>
+				<hr style="color:white;">
+					<c:if test="${user !=null }">
+						<div style="text-align: center;">
+						<a href="form">판매 등록</a></div>
+					</c:if>			
+				<div id="mainarea">
+					<c:forEach var="bo" items="${saleList }">
+					<div class="gallery bookcase">
+						<div style="height:80%;">
+<%-- 		<img src="../images/bookcase/${bo.cover }" alt="${bo.title }"> --%>
+						<img src="/upload/${bo.cover }" alt="${bo.title }">
+							<!-- todo : 사용자가 파일 (이미지,텍스트 등)을 업로드 했을 때
+								        서버 컴퓨터 특정 폴더에 저장되도록 하며
+								        그 때에는 src 속성값도 url 변경합니다.
+							 -->
+						</div>
+						<div  class="intro">	
+							<c:if test="${bo.status=='N' }">
+								<i class="fa-solid fa-circle-xmark"></i> 판매완료
+							</c:if>
+							<c:if test="${bo.status=='Y' }">
+							<!-- 결제에 필요한 모든 정보를 data-all 사용자 속성으로 저장 -->
+								<a data-all="${bo.bcode},${bo.title},${bo.price},${bo.saleuser}"><i class="fa-regular fa-circle-play"></i> 구매하기</a>
+							</c:if>
+							<div>
+							<c:out value="${bo.title }"/> (<fmt:formatNumber value="${bo.price }" pattern="###,###"/> 원)
+							</div>
+							<div><span style="font-size: 0.8em;">판매회원</span> : <c:out value="${bo.saleuser }"/></div>
+						</div>
+					</div>
+					</c:forEach>
+				</div>
+			</section>
+				
+			<%@ include file="../layout/footer.jsp" %>
+			<div data-num="3" id="datanum"></div>
+		</div>
+>>>>>>> branch 'final' of https://github.com/kimsohee-around/DemoProject.git
 
 <!-- The Modal -->
 <div class="modal" tabindex="-1">
@@ -101,6 +147,7 @@
       </div>
    </div>
 
+<<<<<<< HEAD
       <!-- Scripts -->
          <script src="../assets/js/jquery.min.js"></script>
          <script src="../assets/js/jquery.dropotron.min.js"></script>
@@ -127,7 +174,36 @@
          //evt.stopPropagation()         //클릭 이벤트는 자식 또는 부모요소에 전달되는데 그것을 중지
          const target = evt.target
          if(target.tagName !== 'A') {return}         
+=======
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.dropotron.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+			<script src="../js/nav.js"></script>
+			<!-- 부트스트랩 - 모달 사용 -->
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+			<!-- 비동기 http 통신 axios api-->  <!-- 비동기 통신을 위한 자바스크립트 api -->
+			<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+			<!-- 결제위젯 SDK 추가 -->
+  			<script src="https://js.tosspayments.com/v1/payment-widget"></script>
+  	<script type="text/javascript">
+	const obj ={}
+	let orderid=''
+  	</script>		
+  	<script src="../js/bookcase.js"></script>		  <!--tossPayInit 함수가 정의 되어있습니다.  -->
+	<script>
+	  	const modal = new bootstrap.Modal(document.querySelector(".modal"))  /* 부트스트랩의 모달 기능을 제공하는 객체*/
+		document.querySelector("#mainarea").addEventListener('click',function(evt){
+			evt.preventDefault()			//a 태그 등 pagination 안에 있는 기본 클릭 동작을 중지
+			//evt.stopPropagation()			//클릭 이벤트는 자식 또는 부모요소에 전달되는데 그것을 중지
+			const target = evt.target
+			if(target.tagName !== 'A') {return}			
+>>>>>>> branch 'final' of https://github.com/kimsohee-around/DemoProject.git
 
+<<<<<<< HEAD
          let yn
          if('${user.userid}'==''){
             yn=confirm('글쓰기는 로그인이 필요합니다. 로그인 하시겠습니까?')
@@ -158,4 +234,37 @@
       
 </script>         
    </body>
+=======
+			let yn
+			if('${user.userid}'==''){
+				yn=confirm('구매는 로그인이 필요합니다. 로그인 하시겠습니까?')
+				/* 로그인 후 글쓰기로 돌아가기 */
+				if(yn) {
+					sessionStorage.setItem('back', 'book/bookcase');
+					location.href='../login'  // 로그인 후 글쓰기 url로 redirect 하기 위한 파라미터
+				}
+			}else {
+			
+			const datas = target.getAttribute("data-all")
+			const arr = datas.split(",");
+			obj.bcode = arr[0];
+			obj.title = arr[1];
+			obj.price = arr[2];
+			obj.saleuser = arr[3];
+			//obj 객체는 tossPayInit() 함수에서 사용할 예정입니다.
+			const now = new Date();
+			// 정규식 \d 는 숫자 , \D 는 숫자가 아닌것
+			orderid = now.toISOString().replace(/\D/g, '').slice(2, 14);
+	//		const obj = {bcode :arr[0] ,title:arr[1] , price :arr[2] , saleuser:arr[3] }
+			document.querySelector(".modal-body #saleuser").innerHTML = obj.saleuser
+			document.querySelector(".modal-body #title").innerHTML = obj.title
+			document.querySelector(".modal-body #price").innerHTML = Number(obj.price).toLocaleString("ko-KR")
+			modal.show();
+			tossPayInit();		//toss 결제창 만드는 함수.
+			}
+		})
+		
+</script>			
+	</body>
+>>>>>>> branch 'final' of https://github.com/kimsohee-around/DemoProject.git
 </html>
