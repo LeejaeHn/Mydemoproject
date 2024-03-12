@@ -13,12 +13,7 @@ public class BookCaseFormController implements Controller {
 
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-<<<<<<< HEAD
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("BookcaseForm.jsp");
-=======
 		RequestDispatcher dispatcher = request.getRequestDispatcher("bookcaseForm.jsp");
->>>>>>> refs/heads/final
 		dispatcher.forward(request, response);
 	}
 
