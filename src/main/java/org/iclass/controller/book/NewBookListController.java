@@ -1,6 +1,7 @@
 package org.iclass.controller.book;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,18 +9,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.iclass.controller.Controller;
+import org.iclass.dao.NewBooksDao;
+import org.iclass.vo.NewBooks;
 
-public class BookCaseFormController implements Controller {
+public class NewBookListController implements Controller {
 
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-<<<<<<< HEAD
+		NewBooksDao dao = NewBooksDao.getInstance();
+		List<NewBooks> list = dao.list();
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("BookcaseForm.jsp");
-=======
-		RequestDispatcher dispatcher = request.getRequestDispatcher("bookcaseForm.jsp");
->>>>>>> refs/heads/final
+		request.setAttribute("books", list);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("newbooks.jsp");
 		dispatcher.forward(request, response);
+		
 	}
 
 }

@@ -9,17 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.iclass.controller.Controller;
 
-public class BookCaseFormController implements Controller {
+public class NewFormController implements Controller {
 
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-<<<<<<< HEAD
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("BookcaseForm.jsp");
-=======
-		RequestDispatcher dispatcher = request.getRequestDispatcher("bookcaseForm.jsp");
->>>>>>> refs/heads/final
+		RequestDispatcher dispatcher = request.getRequestDispatcher("newForm.jsp");
 		dispatcher.forward(request, response);
+
 	}
 
 }
